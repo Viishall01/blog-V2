@@ -15,8 +15,9 @@ export const handler = NextAuth({
             session.user.username = session.user.name.split(' ').join('').toLocaleLowerCase();
             session.user.uid = token.sub;
             return session;
-        }
-    }
+        },
+    },
+    secret: process.env.NEXT_PUBLIC_NEXTAUTH_SECRET;
 });
 // export default NextAuth(authOptions);
 export {handler as GET, handler as POST, handler as PUT}
